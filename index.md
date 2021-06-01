@@ -1,37 +1,68 @@
-## Welcome to GitHub Pages
+# Bienvenue sur le tutoriel magnifique PWA
 
-You can use the [editor on GitHub](https://github.com/romainrousseaux/romainrousseaux.github.io/edit/main/index.md) to maintain and preview the content for your website in Markdown files.
+Au cours de ce tutorat, vous serez amenés à développer une PWA à l'aide du service worker d'Angular (Youpi !).
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Prérequis
 
-### Markdown
+L'installation du CLI d'Angular :
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+```bash
+npm install -g @angular/cli
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+## Création d'un projet Angular
 
-### Jekyll Themes
+Pour créer un projet sur Angular, on utilise la commande ci-dessous
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/romainrousseaux/romainrousseaux.github.io/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+```bash
+ng new app --routing
+```
 
-### Support or Contact
+Ensuite, on se rend dans le dossier de l'application, et on ajoute le service worker d'Angular :
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+```bash
+ng add @angular/pwa --project app
+```
+
+Une modification doit-être faite dans le fichier **ngsw-config.json**
+![Image](config.png)
+
+## Réalisation
+
+Pour apprendre à se servir d'Angular, un tutoriel dédié est présent sur le site officiel :[Tutoriel Angular](https://angular.io/tutorial)
+
+### Utilisation de l'API
+
+De notre côté, nous allons seulement faire l'étape d'affichage de la liste, et ensuite nous allons utiliser l'API pour faire une page de connexion.
+
+La première étape est de créer un service qui va contenir les fonctions d'appel à l'API, nous l'appelerons : AuthenticationService
+
+```bash
+ng g service authentication
+```
+
+Dans ce service , développez les fonctions pour faire une requête API en vous aidant de cette partie : [Request Data from a server](https://angular.io/tutorial/toh-pt6)
+
+Ensuite, il faut créer un component d'authentification :
+
+```bash
+ng g component login
+```
+
+Ici, ajouter un formulaire et faites en sorte que lorsque que l'on valide celui-ci, on appelle les fonctions du services pour se connecter.
+
+### Notification
+
+Pour cette étape, nous souhaitons ajouter une notification lorsque la personne se connecte.
+
+Aidez-vous des captures d'écran ci-dessous pour lancer une notificaton à ce moment.
+
+![Image](permission-notification.png)
+
+![Image](fonction-notification.png)
+
+### Accès à une ressource matérielle depuis le téléphone
+
+Si l'on souhaite accèder à une ressource matérielle, il nous suffit d'utiliser un input de type file directement dans notre fichier html.
+
+`<input type="file" accept="image/x-png,image/jpeg,image/gif"/>`
